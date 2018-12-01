@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1068413162917",
+    "firebase_url": "https://studyhelper-2f1e2.firebaseio.com",
+    "project_id": "studyhelper-2f1e2",
+    "storage_bucket": "studyhelper-2f1e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1068413162917:android:c48b4d7b89489e25",
+        "android_client_info": {
+          "package_name": "com.example.ashvi.studyhelper"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1068413162917-6amcto8f3rm3rprgk48cpsm52c5esqkr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCoIUQGrvRuMGw9WfIX8V2H1tiHQPRhQ4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
