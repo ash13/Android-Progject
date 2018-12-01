@@ -50,8 +50,10 @@ public class ProfileActivity extends AppCompatActivity {
         user_name = (TextView)findViewById(R.id.user_name);
         user = mAuth.getCurrentUser();
 
-        database=FirebaseDatabase.getInstance();
-        mDatabase=database.getReference("User_details");
+
+
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference("User_details");
         final FirebaseUser reqd_User;
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
