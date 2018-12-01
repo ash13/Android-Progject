@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:text="Profile"
+        android:textColor="#000"
+        android:textSize="30sp" />
+    <TextView
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:id="@+id/profileEmail"/>
+    <TextView
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:id="@+id/profileUid"/>
+    <Button
+        android:id="@+id/button_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/preferences"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@drawable/blue"
+        android:text="Preferences"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton10"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        app:srcCompat="@android:color/holo_blue_dark"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton11"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        app:srcCompat="@android:color/holo_blue_dark"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton12"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        app:srcCompat="@android:color/holo_blue_dark"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="196dp" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+
+</LinearLayout>
