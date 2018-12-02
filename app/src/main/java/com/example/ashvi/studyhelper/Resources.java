@@ -12,6 +12,8 @@ public class Resources extends AppCompatActivity {
     Button youtube;
     Button khanAcademy;
     Button wolfram;
+    Button quizlet;
+    Button sparkNotes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,8 @@ public class Resources extends AppCompatActivity {
         youtube =  findViewById(R.id.youtube);
         khanAcademy = findViewById(R.id.khanAcademy);
         wolfram = findViewById(R.id.wolfram);
+        quizlet = findViewById(R.id.quizlet);
+        sparkNotes = findViewById(R.id.sparknotes);
 
         youtube.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -52,6 +56,23 @@ public class Resources extends AppCompatActivity {
                 startActivity(browserIntent);
             }
         });
+        quizlet.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://quizlet.com/"));
+                startActivity(browserIntent);
+            }
+        });
+        sparkNotes.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://www.sparknotes.com/"));
+                startActivity(browserIntent);
+            }
+        });
+
 
     }
     @Override

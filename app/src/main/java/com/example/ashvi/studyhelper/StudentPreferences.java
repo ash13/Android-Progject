@@ -1,12 +1,15 @@
 package com.example.ashvi.studyhelper;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,6 +47,8 @@ public class StudentPreferences extends AppCompatActivity {
     private String uid;
     private DatabaseReference mDatabase;
 
+    private LinearLayout parentLinearLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,7 @@ public class StudentPreferences extends AppCompatActivity {
         hoursPref = findViewById(R.id.hoursPref);
         done = findViewById(R.id.done_button);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        parentLinearLayout = (LinearLayout) findViewById(R.id.parent_linear_layout);
         getSupportActionBar().setTitle("Preferences");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -141,5 +147,15 @@ public class StudentPreferences extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    public void onAddField(View v) {
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View rowView = inflater.inflate(R.layout.field, null);
+        // Add the new row before the add field button.
+        parentLinearLayout.addView(rowView, parentLinearLayout.getChildCount() - 1);
+    }
+
+    public void onDelete(View v) {
+        parentLinearLayout.removeView((View) v.getParent());
     }
 }
