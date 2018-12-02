@@ -1,5 +1,7 @@
 package com.example.ashvi.studyhelper;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +21,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import android.support.annotation.NonNull;
-
+import android.widget.Toolbar;
 
 
 public class StudentPreferences extends AppCompatActivity {
@@ -53,7 +55,8 @@ public class StudentPreferences extends AppCompatActivity {
         done = findViewById(R.id.done_button);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         getSupportActionBar().setTitle("Preferences");
-        //Setting on Click on the Done button. Here the data entered should be sent to the database.
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Getting current user
         mAuth = FirebaseAuth.getInstance();
@@ -132,5 +135,11 @@ public class StudentPreferences extends AppCompatActivity {
             }
         });
 
+
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

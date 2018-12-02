@@ -48,20 +48,22 @@
         tools:layout_editor_absoluteY="196dp" />
 
     <ImageButton
-        android:id="@+id/imageButton10"
         android:layout_width="match_parent"
         android:layout_height="91dp"
         app:srcCompat="@android:color/holo_blue_dark"
         tools:layout_editor_absoluteX="207dp"
         tools:layout_editor_absoluteY="196dp" />
 
-    <ImageButton
-        android:id="@+id/imageButton11"
+    <Button
+        android:id="@+id/resource"
         android:layout_width="match_parent"
-        android:layout_height="91dp"
-        app:srcCompat="@android:color/holo_blue_dark"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="326dp" />
+        android:layout_height="82dp"
+        android:background="@drawable/blue"
+        android:text="Resources"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="196dp" />
 
     <ImageButton
         android:id="@+id/imageButton12"

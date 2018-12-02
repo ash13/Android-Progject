@@ -33,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView user_name;
     private Button logout;
     private Button preferences;
+    private Button resources;
 
     private DatabaseReference mDatabase;
     private FirebaseDatabase database;
@@ -47,6 +48,7 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         logout = (Button)findViewById(R.id.button_logout);
         preferences = (Button) findViewById(R.id.preferences);
+        resources = (Button) findViewById(R.id.resource);
         user_name = (TextView)findViewById(R.id.user_name);
         user = mAuth.getCurrentUser();
 
@@ -115,10 +117,21 @@ public class ProfileActivity extends AppCompatActivity {
         preferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v==preferences){
+                if (v == preferences){
                     if (user != null) {
                         //Testing with LoginActivity Class
                         startActivity(new Intent(getApplicationContext(), StudentPreferences.class));
+                    }
+                }
+            }
+        });
+        resources.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == resources){
+                    if (user != null) {
+                        //Testing with LoginActivity Class
+                        startActivity(new Intent(getApplicationContext(), Resources.class));
                     }
                 }
             }
