@@ -14,10 +14,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="153dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="20dp"
         android:text="Expected hours of study per week:"
         android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +26,10 @@
     <TextView
         android:id="@+id/major"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="323dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Major:"
         android:textColor="@android:color/black"
         android:textSize="16sp"
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="322dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="96dp"
         android:text="Name:"
         android:textColor="@android:color/black"
         android:textSize="16sp"
@@ -109,18 +109,19 @@
         app:layout_constraintTop_toBottomOf="@+id/hours" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="417dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="350dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <include
             layout="@layout/preferences_geofence"
-            android:layout_width="match_parent"
+            android:layout_width="215dp"
             android:layout_height="472dp"
             android:layout_marginEnd="69dp"
             android:layout_marginStart="70dp"
@@ -133,13 +134,38 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="144dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Study locations"
-        android:textSize="16sp"
         android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hoursPref" />
+
+    <ImageView
+        android:id="@+id/profilePicture"
+        android:layout_width="83dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/cameraBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_light_normal_background" />
+
+    <Button
+        android:id="@+id/cameraBtn"
+        android:layout_width="143dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="169dp"
+        android:layout_marginTop="29dp"
+        android:text="Set profile picture"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profilePicture"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -1,11 +1,15 @@
 package com.example.ashvi.studyhelper;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +39,10 @@ public class ProfileActivity extends AppCompatActivity {
     private Button preferences;
     private Button resources;
 
+    private ImageView profilePicture;
+    private Bitmap profilePic;
+    private String profilePicString;
+
     private DatabaseReference mDatabase;
     private FirebaseDatabase database;
     private User u;
@@ -51,6 +59,8 @@ public class ProfileActivity extends AppCompatActivity {
         resources = (Button) findViewById(R.id.resource);
         user_name = (TextView)findViewById(R.id.user_name);
         user = mAuth.getCurrentUser();
+        profilePicture = findViewById(R.id.profile_image);
+        profilePic = profilePicture.getDrawingCache();
 
 
 
@@ -72,9 +82,15 @@ public class ProfileActivity extends AppCompatActivity {
 
                     Toast.makeText(ProfileActivity.this, "Got Something I guess:"+ u.toString(),
                             Toast.LENGTH_SHORT).show();
-                    String u_name=u.name;
-                    String u_id=u.id;
-                    String major=u.major;
+                    String u_name = u.name;
+                    String u_id = u.id;
+                    String major = u.major;
+                    profilePicString = u.profilePicture;
+                    if (profilePicString != null){
+                        byte[] decodedString = Base64.decode(profilePicString, Base64.DEFAULT);
+                        profilePic = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                        profilePicture.setImageBitmap(profilePic);
+                    }
                     user_name.setText("Hello "+u_name+"Your major :"+major);
                 }
             }
