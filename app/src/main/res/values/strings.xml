@@ -36,4 +36,5 @@
     <string name="major_label">Major:</string>
     <string name="location_label">Study Locations:</string>
     <string name="Okay">Okay,Done!</string>
+    <string name="stopped">stopped</string>
 </resources>

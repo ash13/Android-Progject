@@ -38,6 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button logout;
     private Button preferences;
     private Button resources;
+    private Button noiseDetect;
 
     private ImageView profilePicture;
     private Bitmap profilePic;
@@ -61,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
         user = mAuth.getCurrentUser();
         profilePicture = findViewById(R.id.profile_image);
         profilePic = profilePicture.getDrawingCache();
+        noiseDetect = findViewById(R.id.noiseDetect);
 
 
 
@@ -137,6 +139,17 @@ public class ProfileActivity extends AppCompatActivity {
                     if (user != null) {
                         //Testing with LoginActivity Class
                         startActivity(new Intent(getApplicationContext(), StudentPreferences.class));
+                    }
+                }
+            }
+        });
+        noiseDetect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == noiseDetect){
+                    if (user != null) {
+                        //Testing with LoginActivity Class
+                        startActivity(new Intent(getApplicationContext(), DetectNoiseThread.class));
                     }
                 }
             }
