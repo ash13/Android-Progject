@@ -25,13 +25,4 @@ public class User {
         this.hours = hours;
         this.profilePicture = profilePicture;
     }
-
-    public User getUserFromID (FirebaseUser user, String id){
-        String userID = user.getUid();
-        boolean isUser = false;
-        if (userID == id){
-            isUser = true;
-        }
-        return this;
-    }
 }

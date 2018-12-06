@@ -1,13 +1,23 @@
 package com.example.ashvi.studyhelper;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -28,6 +38,8 @@ public class DetectNoiseThread extends AppCompatActivity {
 
     int RECORD_AUDIO = 0;
     private PowerManager.WakeLock mWakeLock;
+    private NotificationCompat.Builder notification_builder;
+    private NotificationManagerCompat notification_manager;
 
     private Handler mHandler = new Handler();
 
@@ -44,7 +56,7 @@ public class DetectNoiseThread extends AppCompatActivity {
     private Runnable mSleepTask = new Runnable() {
         public void run() {
             //Log.i("Noise", "runnable mSleepTask");
-            start();
+//            start();
         }
     };
 
@@ -69,16 +81,16 @@ public class DetectNoiseThread extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         // Defined SoundLevelView in main.xml file
         setContentView(R.layout.activity_detect_noise);
-        mStatusView = (TextView) findViewById(R.id.status);
-        tv_noice=(TextView)findViewById(R.id.tv_noice);
-        bar=(ProgressBar)findViewById(R.id.progressBar1);
+        mStatusView =  findViewById(R.id.status);
+        tv_noice = findViewById(R.id.tv_noice);
+        bar = findViewById(R.id.progressBar1);
         startDetect = findViewById(R.id.startNoiseDetect);
         stopDetect = findViewById(R.id.stopNoiseDetect);
         // Used to record voice
         mSensor = new DetectNoise();
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "NoiseAlert");
-        // Start detect
+        // Start button
         startDetect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,21 +111,20 @@ public class DetectNoiseThread extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onResume() {
-        super.onResume();
-        //Log.i("Noise", "==== onResume ===");
-
-        initializeApplicationConstants();
-        if (!mRunning) {
-            mRunning = true;
-            start();
-        }
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        //Log.i("Noise", "==== onResume ===");
+//
+//
+//        if (!mRunning) {
+//            mRunning = true;
+//            start();
+//        }
+//    }
     @Override
     public void onStop() {
         super.onStop();
-        // Log.i("Noise", "==== onStop ===");
         //Stop noise monitoring
         stop();
     }
@@ -124,8 +135,7 @@ public class DetectNoiseThread extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},
                     RECORD_AUDIO);
         }
-
-        //Log.i("Noise", "==== start ===");
+        initializeApplicationConstants();
         mSensor.start();
         if (!mWakeLock.isHeld()) {
             mWakeLock.acquire();
@@ -149,25 +159,52 @@ public class DetectNoiseThread extends AppCompatActivity {
 
     private void initializeApplicationConstants() {
         // Set Noise Threshold
-        mThreshold = 8;
+        mThreshold = 14;
 
     }
 
     private void updateDisplay(String status, double signalEMA) {
         mStatusView.setText(status);
         bar.setProgress((int)signalEMA);
-        Log.d("SONUND", String.valueOf(signalEMA));
+        Log.d("SOUND", String.valueOf(signalEMA));
         tv_noice.setText(signalEMA+"dB");
     }
 
     private void callForHelp(double signalEMA) {
 
         //stop();
-        // Show alert when noise thersold crossed
-        Toast.makeText(getApplicationContext(), "Place is too load. Please move somewhere else to study.",
+        // Show alert when noise threshold crossed
+        Toast.makeText(getApplicationContext(), "Place is too loud. Please move somewhere else to study.",
                 Toast.LENGTH_LONG).show();
-        Log.d("SONUND", String.valueOf(signalEMA));
+        Log.d("SOUND", String.valueOf(signalEMA));
+        sendNotification();
         tv_noice.setText(signalEMA+"dB");
     }
-
-};
+    public void sendNotification(){
+        Intent open_activity_intent = new Intent(this, DetectNoiseThread.class);
+        PendingIntent pending_intent = PendingIntent
+                .getActivity(this, 0, open_activity_intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        NotificationManager notification_manager = (NotificationManager) this
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String chanel_id = "3000";
+            CharSequence name = "Channel Name";
+            String description = "Chanel Description";
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            NotificationChannel mChannel = new NotificationChannel(chanel_id, name, importance);
+            mChannel.setDescription(description);
+            mChannel.enableLights(true);
+            mChannel.setLightColor(Color.BLUE);
+            notification_manager.createNotificationChannel(mChannel);
+            notification_builder = new NotificationCompat.Builder(this, chanel_id);
+        } else {
+            notification_builder = new NotificationCompat.Builder(this);
+        }
+        notification_builder.setSmallIcon(R.drawable.ic_launcher_foreground)
+                    .setContentTitle("Study Helper")
+                .setContentText("Place is too loud. Please move somewhere else to study.")
+                .setAutoCancel(true)
+                .setContentIntent(pending_intent);
+        notification_manager.notify(3000,notification_builder.build());
+    }
+}

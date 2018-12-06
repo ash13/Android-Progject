@@ -1,99 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
-
-    <Button
-        android:id="@+id/noiseDetect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Detect Noise" />
-
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="78dp"
-        android:layout_height="74dp"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="150dp"
-        android:src="@drawable/common_google_signin_btn_icon_light_normal_background"
-        app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="3dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20dp"
-        android:text="Profile"
-        android:textColor="#000"
-        android:textSize="30sp" />
-    <TextView
-        android:padding="10dp"
-        android:layout_margin="5dp"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:id="@+id/profileEmail"/>
-    <TextView
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:id="@+id/profileUid"/>
-    <Button
-        android:id="@+id/button_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_gravity="center"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/preferences"
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:background="@drawable/blue"
-        android:text="Preferences"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="196dp" />
+        <Button
+            android:id="@+id/noiseDetect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detect Noise" />
 
-    <ImageButton
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        app:srcCompat="@android:color/holo_blue_dark"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="196dp" />
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="130dp"
+            android:src="@drawable/common_google_signin_btn_icon_light_normal_background"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="3dp" />
 
-    <Button
-        android:id="@+id/resource"
-        android:layout_width="match_parent"
-        android:layout_height="82dp"
-        android:background="@drawable/blue"
-        android:text="Resources"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="207dp"
-        tools:layout_editor_absoluteY="196dp" />
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
-    <ImageButton
-        android:id="@+id/imageButton12"
-        android:layout_width="match_parent"
-        android:layout_height="91dp"
-        app:srcCompat="@android:color/holo_blue_dark"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="196dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="20dp"
+            android:text="Profile"
+            android:textColor="#000"
+            android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        <Button
+            android:id="@+id/button_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/preferences"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:background="@drawable/blue"
+            android:text="Preferences"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="196dp" />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            app:srcCompat="@android:color/holo_blue_dark"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="196dp" />
+
+        <Button
+            android:id="@+id/resource"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:background="@drawable/blue"
+            android:text="Resources"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="196dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton12"
+            android:layout_width="match_parent"
+            android:layout_height="91dp"
+            app:srcCompat="@android:color/holo_blue_dark"
+            tools:layout_editor_absoluteX="54dp"
+            tools:layout_editor_absoluteY="196dp" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
