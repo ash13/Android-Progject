@@ -1,8 +1,10 @@
 package com.example.ashvi.studyhelper;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -39,6 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button preferences;
     private Button resources;
     private Button noiseDetect;
+    private Button studyLocations;
 
     private ImageView profilePicture;
     private Bitmap profilePic;
@@ -47,13 +50,12 @@ public class ProfileActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseDatabase database;
     private User u;
+    private final int REQ_PERMISSION = 999;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Email = (TextView)findViewById(R.id.profileEmail);
-        Uid = (TextView)findViewById(R.id.profileUid);
         mAuth = FirebaseAuth.getInstance();
         logout = (Button)findViewById(R.id.button_logout);
         preferences = (Button) findViewById(R.id.preferences);
@@ -63,6 +65,9 @@ public class ProfileActivity extends AppCompatActivity {
         profilePicture = findViewById(R.id.profile_image);
         profilePic = profilePicture.getDrawingCache();
         noiseDetect = findViewById(R.id.noiseDetect);
+        studyLocations = findViewById(R.id.maps);
+
+        askPermission();
 
 
 
@@ -121,8 +126,8 @@ public class ProfileActivity extends AppCompatActivity {
         if (user != null){
             String email = user.getEmail();
             String uid = user.getUid();
-            Email.setText(email);
-            Uid.setText(uid);
+//            Email.setText(email);
+//            Uid.setText(uid);
 
 
 
@@ -165,5 +170,24 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
+        studyLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == studyLocations){
+                    if (user != null) {
+                        //Testing with LoginActivity Class
+                        startActivity(new Intent(getApplicationContext(), GeofenceActivity.class));
+                    }
+                }
+            }
+        });
+    }
+    private void askPermission() {
+        Log.d("tag", "askPermission()");
+        ActivityCompat.requestPermissions(
+                this,
+                new String[] { Manifest.permission.ACCESS_FINE_LOCATION },
+                REQ_PERMISSION
+        );
     }
 }

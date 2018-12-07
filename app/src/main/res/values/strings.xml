@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Studyhelper</string>
 
+    <string name="google_Api_Key">AIzaSyBDlPH4zEGCT1cGqO0Xx2-Xc3qiWj7lQAU</string>
+
 
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>

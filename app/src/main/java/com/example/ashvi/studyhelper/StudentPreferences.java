@@ -34,12 +34,11 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import android.support.annotation.NonNull;
-import android.widget.Toolbar;
 
 import java.io.ByteArrayOutputStream;
 
 
-public class StudentPreferences extends AppCompatActivity {
+public class StudentPreferences extends AppCompatActivity  {
 
     private static final int CAMERA_REQUEST = 1888;
 
